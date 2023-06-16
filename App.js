@@ -1,20 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
 
-export default function App() {
+
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack'
+import Cars from './components/cars';
+import Rent from './components/rent';
+import LogIn from './components/logIn';
+import SignIn from './components/signIn';
+import PasswordRecovery from './components/passwordRecovery';
+import ReturnCar from './components/returnCar';
+
+const Stack = createNativeStackNavigator();
+function App(){
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+   <NavigationContainer>
+      <Stack.Navigator screenOptions={{headerShown:false}}>
+        <Stack.Screen name="Login" component={LogIn} />
+        <Stack.Screen name="PasswordRecovery" component={PasswordRecovery}/>
+        <Stack.Screen name='Signin' component={SignIn}/>
+        <Stack.Screen name='Cars' component={Cars}/>
+        <Stack.Screen name='Rent' component={Rent}/>
+        <Stack.Screen name='ReturnCar' component={ReturnCar}/>
+      </Stack.Navigator>
+   </NavigationContainer>
+    
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
